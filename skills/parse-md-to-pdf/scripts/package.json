@@ -1,0 +1,13 @@
+{
+  "name": "parse-md-to-pdf",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Convert Markdown files (with Mermaid diagram support) to A4 PDFs",
+  "dependencies": {
+    "highlight.js": "^11.9.0",
+    "marked": "^15.0.0",
+    "marked-highlight": "^2.2.0",
+    "puppeteer": "^24.0.0"
+  }
+}

@@ -38,7 +38,7 @@ Each skill follows a standard format:
 
 | Skill | Description |
 |-------|-------------|
-| — | Coming soon |
+| [parse-md-to-pdf](skills/parse-md-to-pdf/) | Convert Markdown files to print-ready A4 PDFs with Mermaid diagram support |
 
 ## 📝 License
 

@@ -1,0 +1,248 @@
+/* ============================================
+   A4 Print Stylesheet for Markdown-to-PDF
+   GitHub-flavored styling, optimized for print
+   ============================================ */
+
+/* --- Page Setup --- */
+@page {
+  size: A4;
+  margin: 20mm 15mm;
+}
+
+/* --- Base Typography --- */
+:root {
+  --font-body: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+  --font-mono: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+  --color-text: #1f2328;
+  --color-text-secondary: #656d76;
+  --color-border: #d0d7de;
+  --color-bg-subtle: #f6f8fa;
+  --color-link: #0969da;
+  --color-code-bg: #eff1f3;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--font-body);
+  font-size: 11pt;
+  line-height: 1.6;
+  color: var(--color-text);
+  max-width: 100%;
+  margin: 0;
+  padding: 0;
+  -webkit-print-color-adjust: exact;
+  print-color-adjust: exact;
+}
+
+/* --- Headings --- */
+h1, h2, h3, h4, h5, h6 {
+  margin-top: 24pt;
+  margin-bottom: 12pt;
+  font-weight: 600;
+  line-height: 1.25;
+  page-break-after: avoid;
+  break-after: avoid;
+}
+
+h1 {
+  font-size: 22pt;
+  padding-bottom: 8pt;
+  border-bottom: 1px solid var(--color-border);
+}
+
+h2 {
+  font-size: 18pt;
+  padding-bottom: 6pt;
+  border-bottom: 1px solid var(--color-border);
+}
+
+h3 { font-size: 15pt; }
+h4 { font-size: 13pt; }
+h5 { font-size: 11pt; }
+h6 { font-size: 10pt; color: var(--color-text-secondary); }
+
+/* --- Paragraphs & Inline --- */
+p {
+  margin: 0 0 12pt 0;
+}
+
+a {
+  color: var(--color-link);
+  text-decoration: none;
+}
+
+strong { font-weight: 600; }
+em { font-style: italic; }
+
+/* --- Lists --- */
+ul, ol {
+  margin: 0 0 12pt 0;
+  padding-left: 24pt;
+}
+
+li {
+  margin-bottom: 4pt;
+}
+
+li > ul, li > ol {
+  margin-top: 4pt;
+  margin-bottom: 0;
+}
+
+/* Task lists */
+ul.contains-task-list {
+  list-style: none;
+  padding-left: 12pt;
+}
+
+.task-list-item input[type="checkbox"] {
+  margin-right: 6pt;
+}
+
+/* --- Code --- */
+code {
+  font-family: var(--font-mono);
+  font-size: 9.5pt;
+  background-color: var(--color-code-bg);
+  padding: 1pt 4pt;
+  border-radius: 4px;
+}
+
+pre {
+  background-color: var(--color-bg-subtle);
+  border: 1px solid var(--color-border);
+  border-radius: 6px;
+  padding: 12pt;
+  overflow-x: auto;
+  font-size: 9pt;
+  line-height: 1.5;
+  margin: 0 0 12pt 0;
+  page-break-inside: avoid;
+  break-inside: avoid;
+}
+
+pre code {
+  background: none;
+  padding: 0;
+  border-radius: 0;
+  font-size: inherit;
+}
+
+/* --- Tables --- */
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+  width: 100%;
+  margin: 0 0 12pt 0;
+  font-size: 10pt;
+  page-break-inside: avoid;
+  break-inside: avoid;
+}
+
+thead {
+  display: table-header-group;
+}
+
+th, td {
+  padding: 6pt 10pt;
+  border: 1px solid var(--color-border);
+  text-align: left;
+}
+
+th {
+  font-weight: 600;
+  background-color: var(--color-bg-subtle);
+}
+
+tr:nth-child(even) {
+  background-color: #f9fafb;
+}
+
+/* --- Blockquotes --- */
+blockquote {
+  margin: 0 0 12pt 0;
+  padding: 4pt 12pt;
+  border-left: 4px solid var(--color-border);
+  color: var(--color-text-secondary);
+}
+
+blockquote > :first-child {
+  margin-top: 0;
+}
+
+blockquote > :last-child {
+  margin-bottom: 0;
+}
+
+/* --- Horizontal Rules --- */
+hr {
+  border: none;
+  border-top: 1px solid var(--color-border);
+  margin: 20pt 0;
+}
+
+/* --- Images --- */
+img {
+  max-width: 100%;
+  height: auto;
+  page-break-inside: avoid;
+  break-inside: avoid;
+}
+
+/* --- Mermaid Diagrams --- */
+.mermaid-container {
+  text-align: center;
+  margin: 16pt 0;
+  page-break-inside: avoid;
+  break-inside: avoid;
+}
+
+.mermaid-container svg {
+  max-width: 100%;
+  height: auto;
+}
+
+/* --- Page Break Management --- */
+h1, h2, h3 {
+  page-break-after: avoid;
+  break-after: avoid;
+}
+
+figure, img, pre, table, .mermaid-container {
+  page-break-inside: avoid;
+  break-inside: avoid;
+}
+
+/* Avoid orphan headings at bottom of page */
+h1 + *, h2 + *, h3 + * {
+  page-break-before: avoid;
+  break-before: avoid;
+}
+
+/* --- Highlight.js Theme (Light, print-friendly) --- */
+.hljs {
+  color: #24292e;
+  background: var(--color-bg-subtle);
+}
+.hljs-comment,
+.hljs-quote { color: #6a737d; font-style: italic; }
+.hljs-keyword,
+.hljs-selector-tag { color: #d73a49; font-weight: 600; }
+.hljs-string,
+.hljs-attr { color: #032f62; }
+.hljs-number,
+.hljs-literal { color: #005cc5; }
+.hljs-built_in,
+.hljs-builtin-name { color: #005cc5; }
+.hljs-function .hljs-title,
+.hljs-title.function_ { color: #6f42c1; }
+.hljs-type,
+.hljs-class .hljs-title { color: #6f42c1; }
+.hljs-variable,
+.hljs-template-variable { color: #e36209; }
+.hljs-meta { color: #005cc5; }
+.hljs-addition { color: #22863a; background-color: #f0fff4; }
+.hljs-deletion { color: #b31d28; background-color: #ffeef0; }
